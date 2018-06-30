@@ -13,5 +13,6 @@ use Illuminate\Http\Request;
 |
 */
 \Debugbar::disable(); // 在 api 中 关闭 debugbar
-Route::any('/', 'WeChatController@serve');
+Route::any('/', 'WeChatController@serve'); // 微信服务器回调
+
 
