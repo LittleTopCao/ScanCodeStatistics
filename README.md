@@ -8,4 +8,7 @@
 * nginx 1.14
 * php 7.2
 * laravel 5.5
+    * debugbar
+    * ide-helper
+    * easywechat
 * mariadb 101
