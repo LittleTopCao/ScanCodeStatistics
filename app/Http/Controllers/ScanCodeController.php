@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use DebugBar;
+use Debugbar;
 /**
  * Class ScanCodeController
  * @package App\Http\Controllers
@@ -19,7 +19,7 @@ class ScanCodeController extends Controller
 
     public function show($id)
     {
-        DebugBar::info(session('wechat.oauth_user'));
+        Debugbar::info(session('wechat.oauth_user'));
         return 'xxx';
     }
 
