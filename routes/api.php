@@ -12,6 +12,6 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
+\Debugbar::disable(); // 在 api 中 关闭 debugbar
 Route::any('/', 'WeChatController@serve');
 
