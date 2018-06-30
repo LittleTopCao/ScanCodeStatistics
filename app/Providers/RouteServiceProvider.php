@@ -51,7 +51,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapWebRoutes()
     {
-        Route::domain('wechat.{do}.{main}')
+        Route::domain('admin.{do}.{main}')
             ->middleware('web')
             ->namespace($this->namespace)
             ->group(base_path('routes/web.php'));
@@ -66,7 +66,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapApiRoutes()
     {
-        Route::domain('api.{do}.{main}')
+        Route::domain('wechat.{do}.{main}')
             ->middleware('api')
             ->namespace($this->namespace)
             ->group(base_path('routes/api.php'));
