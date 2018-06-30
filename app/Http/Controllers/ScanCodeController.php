@@ -19,7 +19,13 @@ class ScanCodeController extends Controller
 
     public function show($id)
     {
-        Debugbar::info(session('wechat.oauth_user'));
+        // 拿到用户
+        $user = session('wechat.oauth_user.default');
+        // 判断用户是否存在数据库
+        // 如果存在拿到 id
+        // 不存在先存储
+        // 判断二维码是否存在
+        //
         return 'xxx';
     }
 

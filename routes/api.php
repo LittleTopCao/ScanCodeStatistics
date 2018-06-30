@@ -13,6 +13,6 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::any('/', 'WeChatController@serve'); // 微信服务器回调
+Route::any('/serve', 'WeChatController@serve'); // 微信服务器回调
 
 
