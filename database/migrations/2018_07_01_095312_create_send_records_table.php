@@ -18,6 +18,9 @@ class CreateSendRecordsTable extends Migration
             $table->unsignedInteger('scan_user_id')->comment('微信用户 id');
             $table->foreign('scan_user_id')->references('id')->on('scan_users');
 
+            $table->unsignedInteger('send_user_id')->comment(' id');
+            $table->foreign('send_user_id')->references('id')->on('send_users');
+
             $table->unsignedInteger('number')->comment('领取数量');
 
             $table->timestamps();
