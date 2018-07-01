@@ -35,7 +35,7 @@ class ScanCodeController extends Controller
         $scanUser = ScanUser::firstOrCreate(['open_id' => $wechatUser->getId()],
             ['name' => $wechatUser->getName(), 'nick_name' => $wechatUser->getNickname(), 'avatar' => $wechatUser->getAvatar()]);
         // 判断最新扫码时间, 如果不是今天 则  插入记录
-        if(!Carbon::parse($scanUser->scan_date)->isToday()){
+        if($scanUser->scan_date == null || !Carbon::parse($scanUser->scan_date)->isToday()){
             // 插入 扫码记录
             $scanRecord = new ScanRecord();
             $scanRecord->scan_users_id = $scanUser->id;
