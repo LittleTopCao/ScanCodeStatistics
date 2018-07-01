@@ -18,7 +18,3 @@ Route::get('/scan/{id}', 'ScanCodeController@statistics')->middleware('wechat.oa
 // 领取 礼品 , 返回 成功 提示
 Route::get('/send', 'ScanCodeController@send')->middleware('wechat.oauth:default,snsapi_userinfo');
 
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
