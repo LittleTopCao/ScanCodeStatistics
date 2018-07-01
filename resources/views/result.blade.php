@@ -37,7 +37,7 @@
 </body>
 <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js" type="text/javascript"></script>
 <script type="text/javascript">
-    wx.config({!! app('wechat.official_account')->jssdk->buildConfig(array('closeWindow'), true) !!});
+    wx.config({!! app('wechat.official_account')->jssdk->buildConfig(array('closeWindow'), false) !!});
     // 关闭网页
     function close() {
         wx.closeWindow();
