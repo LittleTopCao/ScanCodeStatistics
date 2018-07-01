@@ -7,9 +7,9 @@ use App\ScanRecord;
 use App\ScanUser;
 use App\SendRecord;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 use Debugbar;
-use Carbon;
 /**
  * Class ScanCodeController
  * @package App\Http\Controllers
