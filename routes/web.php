@@ -13,3 +13,7 @@
 
 // 扫码控制器, 路由参数: 二维码 id , 中间件: 微信用户信息 中间件
 Route::get('/scan/{id}', 'ScanCodeController@show')->middleware('wechat.oauth:default,snsapi_userinfo');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
