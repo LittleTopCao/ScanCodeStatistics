@@ -11,4 +11,5 @@
     * debugbar
     * ide-helper
     * easywechat
+    * laravel-admin
 * mariadb 101
