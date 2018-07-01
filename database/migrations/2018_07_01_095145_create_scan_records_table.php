@@ -16,11 +16,11 @@ class CreateScanRecordsTable extends Migration
         Schema::create('scan_records', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->unsignedInteger('scan_users_id')->comment('微信用户 id');
-            $table->foreign('scan_users_id')->references('id')->on('scan_users');
+            $table->unsignedInteger('scan_user_id')->comment('微信用户 id');
+            $table->foreign('scan_user_id')->references('id')->on('scan_users');
 
-            $table->unsignedInteger('codes_id')->comment('二维码 id');
-            $table->foreign('codes_id')->references('id')->on('codes');
+            $table->unsignedInteger('code_id')->comment('二维码 id');
+            $table->foreign('code_id')->references('id')->on('codes');
             $table->timestamps();
         });
     }

@@ -15,8 +15,8 @@ class CreateSendRecordsTable extends Migration
     {
         Schema::create('send_records', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('scan_users_id')->comment('微信用户 id');
-            $table->foreign('scan_users_id')->references('id')->on('scan_users');
+            $table->unsignedInteger('scan_user_id')->comment('微信用户 id');
+            $table->foreign('scan_user_id')->references('id')->on('scan_users');
 
             $table->unsignedInteger('number')->comment('领取数量');
 

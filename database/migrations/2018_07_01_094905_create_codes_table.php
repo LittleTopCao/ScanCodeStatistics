@@ -18,8 +18,8 @@ class CreateCodesTable extends Migration
             $table->string('name')->unique()->comment('二维码名称');
             $table->longText('code_img_base64')->nullable()->comment('二维码 图片: base64 编码');
 
-            $table->unsignedInteger('factory_codes_id')->comment('厂家二维码 id');
-            $table->foreign('factory_codes_id')->references('id')->on('factory_codes');
+            $table->unsignedInteger('factory_code_id')->comment('厂家二维码 id');
+            $table->foreign('factory_code_id')->references('id')->on('factory_codes');
 
             $table->timestamps();
         });
