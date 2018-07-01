@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class ScanUser extends Model
 {
+
+    protected $fillable = ['open_id', 'name', 'nick_name', 'avatar'];
+
     /**
      * 拥有多个扫码记录
      */
