@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class SendUser extends Model
+class SendCode extends Model
 {
     /**
      * 拥有 领取 记录

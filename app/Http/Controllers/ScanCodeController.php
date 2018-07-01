@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Code;
 use App\ScanRecord;
 use App\ScanUser;
+use App\SendCode;
 use App\SendRecord;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -53,15 +54,17 @@ class ScanCodeController extends Controller
     /**
      * 扫码查看当前个人统计信息
      */
-    public function statistics()
+    public function statistics($id)
     {
+        // 拿到发放二维码
+        $sendCode = SendCode::findOrFail($id);
         // 拿到用户信息
         $wechatUser = session('wechat.oauth_user.default');
         // 查找用户, 没有则创建
         $scanUser = ScanUser::firstOrCreate(['open_id' => $wechatUser->getId()],
             ['name' => $wechatUser->getName(), 'nick_name' => $wechatUser->getNickname(), 'avatar' => $wechatUser->getAvatar()]);
 
-        return view('statistics', ['scanUser' => $scanUser]);
+        return view('statistics', ['scanUser' => $scanUser, 'sendCode' => $sendCode]);
     }
 
     /**
@@ -70,7 +73,12 @@ class ScanCodeController extends Controller
     public function send(Request $request){
         $number = $request->input('number');
         $total = $request->input('total');
+        $sendId = $request->input('code');
 
+        // 拿到发放二维码
+        $sendCode = SendCode::findOrFail($sendId);
+
+        // 拿到用户信息
         $wechatUser = session('wechat.oauth_user.default');
         $scanUser = ScanUser::firstOrCreate(['open_id' => $wechatUser->getId()],
             ['name' => $wechatUser->getName(), 'nick_name' => $wechatUser->getNickname(), 'avatar' => $wechatUser->getAvatar()]);
@@ -80,6 +88,7 @@ class ScanCodeController extends Controller
             // 插入领取记录, 并把 可领取数 归零
             $sendRecord = new SendRecord();
             $sendRecord->scan_user_id = $scanUser->id;
+            $sendRecord->send_code_id = $sendCode->id;
             $sendRecord->number = $scanUser->scan_number;
             $sendRecord->save();
 

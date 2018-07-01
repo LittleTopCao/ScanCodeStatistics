@@ -17,8 +17,8 @@ class SendRecord extends Model
     /**
      * 所属发放二维码
      */
-    public function sendUser()
+    public function sendCode()
     {
-        return $this->belongsTo('App\SendUser');
+        return $this->belongsTo('App\SendCode');
     }
 }
