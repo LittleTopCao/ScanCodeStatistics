@@ -60,7 +60,7 @@
 
     // 领取操作, 跳转页面
     function send() {
-        window.location.href = 'send?number={{ $scanUser->scan_number }}&total={{ $scanUser->scan_total }}'
+        window.location.href = '/send?number={{ $scanUser->scan_number }}&total={{ $scanUser->scan_total }}'
     }
 </script>
 </html>
