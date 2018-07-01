@@ -32,7 +32,8 @@ class ScanCodeController extends Controller
         // 拿到用户
         $wechatUser = session('wechat.oauth_user.default');
         // 查找用户, 没有则创建
-        $scanUser = ScanUser::firstOrCreate(['open_id' => $wechatUser->getId()], ['name' => $wechatUser->getName()], ['nick_name' => $wechatUser->getNickname()], ['avatar' => $wechatUser->getAvatar()]);
+        $scanUser = ScanUser::firstOrCreate(['open_id' => $wechatUser->getId()],
+            ['name' => $wechatUser->getName(), 'nick_name' => $wechatUser->getNickname(), 'avatar' => $wechatUser->getAvatar()]);
         // 判断最新扫码时间, 如果不是今天 则  插入记录
         if(!Carbon::parse($scanUser->scan_date)->isToday()){
             // 插入 扫码记录
@@ -57,7 +58,8 @@ class ScanCodeController extends Controller
         // 拿到用户信息
         $wechatUser = session('wechat.oauth_user.default');
         // 查找用户, 没有则创建
-        $scanUser = ScanUser::firstOrCreate(['open_id' => $wechatUser->getId()], ['name' => $wechatUser->getName()], ['nick_name' => $wechatUser->getNickname()], ['avatar' => $wechatUser->getAvatar()]);
+        $scanUser = ScanUser::firstOrCreate(['open_id' => $wechatUser->getId()],
+            ['name' => $wechatUser->getName(), 'nick_name' => $wechatUser->getNickname(), 'avatar' => $wechatUser->getAvatar()]);
 
         return view('statistics', ['scanUser' => $scanUser]);
     }
@@ -70,7 +72,8 @@ class ScanCodeController extends Controller
         $total = $request->input('total');
 
         $wechatUser = session('wechat.oauth_user.default');
-        $scanUser = ScanUser::firstOrCreate(['open_id' => $wechatUser->getId()], ['name' => $wechatUser->getName()], ['nick_name' => $wechatUser->getNickname()], ['avatar' => $wechatUser->getAvatar()]);
+        $scanUser = ScanUser::firstOrCreate(['open_id' => $wechatUser->getId()],
+            ['name' => $wechatUser->getName(), 'nick_name' => $wechatUser->getNickname(), 'avatar' => $wechatUser->getAvatar()]);
 
         $isSendSuccess = false;
         if($scanUser->scan_number == $number && $scanUser->scan_total == $total){
