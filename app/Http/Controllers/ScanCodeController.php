@@ -38,8 +38,8 @@ class ScanCodeController extends Controller
         if($scanUser->scan_date == null || !Carbon::parse($scanUser->scan_date)->isToday()){
             // 插入 扫码记录
             $scanRecord = new ScanRecord();
-            $scanRecord->scan_users_id = $scanUser->id;
-            $scanRecord->codes_id = $code->id;
+            $scanRecord->scan_user_id = $scanUser->id;
+            $scanRecord->code_id = $code->id;
             $scanRecord->save();
             // 更新 扫码次数 及 最新扫码时间
             $scanUser->scan_number += 1;
@@ -79,7 +79,7 @@ class ScanCodeController extends Controller
         if($scanUser->scan_number == $number && $scanUser->scan_total == $total){
             // 插入领取记录, 并把 可领取数 归零
             $sendRecord = new SendRecord();
-            $sendRecord->scan_users_id = $scanUser->id;
+            $sendRecord->scan_user_id = $scanUser->id;
             $sendRecord->number = $scanUser->scan_number;
             $sendRecord->save();
 
