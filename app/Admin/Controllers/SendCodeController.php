@@ -88,16 +88,16 @@ class SendCodeController extends Controller
 
             $grid->column('今日发放')->display(function () {
 
-                $count = DB::select('SELECT count(send_records.number) FROM send_codes INNER JOIN send_records ON send_codes.id = send_records.send_code_id WHERE TO_DAYS(send_records.created_at) = TO_DAYS(NOW()) AND send_codes.id = ?;', [$this->id]);
+                $count = DB::select('SELECT sum(send_records.number) FROM send_codes INNER JOIN send_records ON send_codes.id = send_records.send_code_id WHERE TO_DAYS(send_records.created_at) = TO_DAYS(NOW()) AND send_codes.id = ?;', [$this->id]);
 
-                return ((array)$count[0])['count(send_records.number)'];
+                return ((array)$count[0])['sum(send_records.number)'];
             });
 
             $grid->column('共发放')->display(function () {
 
-                $count = DB::select('SELECT count(send_records.number) FROM send_codes INNER JOIN send_records ON send_codes.id = send_records.send_code_id WHERE send_codes.id = ?;', [$this->id]);
+                $count = DB::select('SELECT sum(send_records.number) FROM send_codes INNER JOIN send_records ON send_codes.id = send_records.send_code_id WHERE send_codes.id = ?;', [$this->id]);
 
-                return ((array)$count[0])['count(send_records.number)'];
+                return ((array)$count[0])['sum(send_records.number)'];
             });
 
             $grid->created_at();
