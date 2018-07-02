@@ -17,7 +17,7 @@ class CreateFactoryCodesTable extends Migration
             $table->increments('id');
             $table->string('name')->unique()->comment('二维码名称');
             $table->string('url')->nullable()->comment('二维码 url');
-            $table->longText('code_img_base64')->nullable()->comment('二维码 图片: base64 编码');
+            $table->string('path')->nullable()->comment('二维码 图片, 存储在 public/uploads/images');
             $table->timestamps();
         });
     }

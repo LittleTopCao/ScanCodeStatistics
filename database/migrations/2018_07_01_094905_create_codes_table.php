@@ -16,7 +16,7 @@ class CreateCodesTable extends Migration
         Schema::create('codes', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->unique()->comment('二维码名称');
-            $table->longText('code_img_base64')->nullable()->comment('二维码 图片: base64 编码');
+            $table->string('path')->nullable()->comment('二维码 图片: 存储在 public/uploads/images 下');
 
             $table->unsignedInteger('factory_code_id')->comment('厂家二维码 id');
             $table->foreign('factory_code_id')->references('id')->on('factory_codes');

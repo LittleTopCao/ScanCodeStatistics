@@ -16,7 +16,7 @@ class CreateSendCodesTable extends Migration
         Schema::create('send_codes', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->unique()->comment('二维码名称');
-            $table->longText('code_img_base64')->nullable()->comment('二维码 图片: base64 编码');
+            $table->string('path')->nullable()->comment('二维码 图片; 存储在 public/upload/images 下 ');
             $table->timestamps();
         });
     }

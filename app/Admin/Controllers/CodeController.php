@@ -85,7 +85,7 @@ class CodeController extends Controller
 
             $grid->name('名称');
 
-//            $grid->code_img_base64('链接');
+//            $grid->path('链接');
 
             $grid->column('今日扫码')->display(function () {
 
@@ -133,7 +133,7 @@ class CodeController extends Controller
                 }
             })->ajax('/admin/api/factory-codes');
 
-            $form->image('code_img_base64', '二维码')->uniqueName();
+            $form->image('path', '二维码')->uniqueName();
 
             $form->display('updated_at', '修改时间');
 
@@ -147,7 +147,7 @@ class CodeController extends Controller
                 QrCode::format('png')->size(256)->margin(0)->encoding('UTF-8')
                     ->generate(url('statistics',$form->model()->id), public_path('uploads/images/'.$name));
 
-                $form->model()->code_img_base64 = 'images/'.$name;
+                $form->model()->path = 'images/'.$name;
                 $form->model()->save();
             });
         });

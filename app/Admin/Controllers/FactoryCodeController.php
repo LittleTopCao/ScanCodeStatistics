@@ -126,7 +126,7 @@ class FactoryCodeController extends Controller
 
             $form->display('url', '链接');
 
-            $form->image('code_img_base64', '二维码')->uniqueName();
+            $form->image('path', '二维码')->uniqueName();
 
             $form->display('updated_at', '修改时间');
 
@@ -134,7 +134,7 @@ class FactoryCodeController extends Controller
 
             $form->saving(function (Form $form) {
                 // 保存前 解析二维码 生成 url 可行
-                $qrcode = new QrReader(realpath($form->code_img_base64));
+                $qrcode = new QrReader(realpath($form->path));
                 $form->url = $qrcode->text();
             });
 

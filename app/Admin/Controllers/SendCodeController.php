@@ -131,7 +131,7 @@ class SendCodeController extends Controller
                 QrCode::format('png')->size(256)->margin(0)->encoding('UTF-8')
                     ->generate(url('send', $form->model()->id), public_path('uploads/images/' . $name));
 
-                $form->model()->code_img_base64 = 'images/' . $name;
+                $form->model()->path = 'images/' . $name;
                 $form->model()->save();
             });
         });
