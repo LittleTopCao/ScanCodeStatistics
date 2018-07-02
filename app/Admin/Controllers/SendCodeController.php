@@ -111,7 +111,7 @@ class SendCodeController extends Controller
 
             });
 
-            $grid->updated_at('更新时间');
+//            $grid->updated_at('更新时间');
 
             $grid->created_at('创建时间');
         });

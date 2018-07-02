@@ -116,7 +116,7 @@ class CodeController extends Controller
                 return FactoryCode::find($factory_code_id)->name;
             });
 
-            $grid->updated_at('修改时间');
+//            $grid->updated_at('修改时间');
 
             $grid->created_at('创建时间');
 

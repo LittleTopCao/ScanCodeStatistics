@@ -8,7 +8,6 @@
 
 namespace App\Admin\Controllers;
 
-
 use App\FactoryCode;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;

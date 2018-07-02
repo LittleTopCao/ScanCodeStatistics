@@ -95,7 +95,7 @@ class ScanUserController extends Controller
 
             $grid->remark('备注');
 
-            $grid->updated_at('修改时间');
+//            $grid->updated_at('修改时间');
 
             $grid->created_at('创建时间');
         });
