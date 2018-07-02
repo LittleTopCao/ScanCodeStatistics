@@ -133,7 +133,7 @@ class CodeController extends Controller
                 }
             })->ajax('/admin/api/factory-codes');
 
-            $form->image('path', '二维码')->uniqueName();
+            $form->image('path', '二维码, 创建时不需要输入,自动生成')->uniqueName();
 
             $form->display('updated_at', '修改时间');
 
