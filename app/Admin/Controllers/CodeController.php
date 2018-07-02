@@ -103,7 +103,7 @@ class CodeController extends Controller
 
             $grid->column('二维码')->display(function () {
 
-                $url = url('public/uploads/'.$this->path);
+                $url = url('uploads/'.$this->path);
                 $arr = explode('.',$url);
                 $extension = array_pop($arr);
                 $name = $this->name.'.'.$extension;
