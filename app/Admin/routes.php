@@ -11,5 +11,10 @@ Route::group([
 ], function (Router $router) {
 
     $router->get('/', 'HomeController@index');
+    $router->resource('factory-codes', FactoryCodeController::class); // 厂家二维码
+    $router->resource('codes', CodeController::class); // 扫码 二维码
+    $router->resource('send-codes', SendCodeController::class); // 发放二维码
+
+    $router->get('api/factory-codes', 'ApiListController@factoryCodes');
 
 });

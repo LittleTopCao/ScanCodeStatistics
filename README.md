@@ -12,4 +12,6 @@
     * ide-helper
     * easywechat
     * laravel-admin
+    * php-qrcode-detector-decoder 解析二维码
+    * simple-qrcode 生成二维码
 * mariadb 101
