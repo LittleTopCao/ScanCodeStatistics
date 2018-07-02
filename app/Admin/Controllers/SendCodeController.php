@@ -100,8 +100,20 @@ class SendCodeController extends Controller
                 return ((array)$count[0])['sum(send_records.number)'];
             });
 
-            $grid->created_at();
-            $grid->updated_at();
+            $grid->column('二维码')->display(function () {
+
+                $url = url('public/uploads/'.$this->path);
+                $arr = explode('.',$url);
+                $extension = array_pop($arr);
+                $name = $this->name.'.'.$extension;
+
+                return "<a target='_blank' href='".$url."' download='".$name."'>下载</>";
+
+            });
+
+            $grid->updated_at('更新时间');
+
+            $grid->created_at('创建时间');
         });
     }
 
@@ -117,6 +129,8 @@ class SendCodeController extends Controller
             $form->display('id', 'ID');
 
             $form->text('name', '名称');
+
+            $form->image('path', '二维码, 创建时不需要输入, 自动生成')->uniqueName();
 
             $form->display('updated_at', '修改时间');
 

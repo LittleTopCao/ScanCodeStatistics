@@ -101,6 +101,17 @@ class CodeController extends Controller
                 return ((array)$count[0])['count(*)'];
             });
 
+            $grid->column('二维码')->display(function () {
+
+                $url = url('public/uploads/'.$this->path);
+                $arr = explode('.',$url);
+                $extension = array_pop($arr);
+                $name = $this->name.'.'.$extension;
+
+                return "<a target='_blank' href='".$url."' download='".$name."'>下载</>";
+
+            });
+
             $grid->factory_code_id('厂家二维码')->display(function($factory_code_id) {
                 return FactoryCode::find($factory_code_id)->name;
             });
@@ -133,7 +144,7 @@ class CodeController extends Controller
                 }
             })->ajax('/admin/api/factory-codes');
 
-            $form->image('path', '二维码, 创建时不需要输入,自动生成')->uniqueName();
+            $form->image('path', '二维码, 创建时不需要输入, 自动生成')->uniqueName();
 
             $form->display('updated_at', '修改时间');
 
