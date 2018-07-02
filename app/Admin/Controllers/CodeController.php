@@ -156,7 +156,7 @@ class CodeController extends Controller
                 $name = md5(uniqid()).'.png';
                 // 生成二维码
                 QrCode::format('png')->size(256)->margin(0)->encoding('UTF-8')
-                    ->generate(url('statistics',$form->model()->id), public_path('uploads/images/'.$name));
+                    ->generate(url('scan',$form->model()->id), public_path('uploads/images/'.$name));
 
                 $form->model()->path = 'images/'.$name;
                 $form->model()->save();
