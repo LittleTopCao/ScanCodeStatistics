@@ -74,7 +74,7 @@ class ScanRecordController extends Controller
         return Admin::grid(ScanRecord::class, function (Grid $grid) {
 
             $grid->scanUser()->name('微信名');
-            $grid->scanUser()->avatar('头像')->image('http://wechat.shitouboy.com', 100, 100);
+            $grid->scanUser()->avatar('头像')->image('http://wechat.shitouboy.com', 50, 50);
             $grid->created_at('扫码时间');
 
             $grid->model()->orderBy('created_at', 'desc'); // 排序规则
