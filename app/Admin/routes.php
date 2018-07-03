@@ -15,6 +15,7 @@ Route::group([
     $router->resource('codes', CodeController::class); // 扫码 二维码
     $router->resource('send-codes', SendCodeController::class); // 发放二维码
     $router->resource('send-users', ScanUserController::class); // 扫码用户
+    $router->resource('scan-record', ScanRecordController::class); // 扫码历史
 
     $router->get('api/factory-codes', 'ApiListController@factoryCodes');
 

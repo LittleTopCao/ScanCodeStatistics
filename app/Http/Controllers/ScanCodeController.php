@@ -35,6 +35,14 @@ class ScanCodeController extends Controller
         // 查找用户, 没有则创建
         $scanUser = ScanUser::firstOrCreate(['open_id' => $wechatUser->getId()],
             ['name' => $wechatUser->getName(), 'nick_name' => $wechatUser->getNickname(), 'avatar' => $wechatUser->getAvatar()]);
+
+        // 判断微信名 和 微信头像 是否已修改 ,
+        if($scanUser->name != $wechatUser->getName() || $scanUser->avatar != $wechatUser->getAvatar()){
+            $scanUser->name = $wechatUser->getName();
+            $scanUser->avatar = $wechatUser->getAvatar();
+            $scanUser->save();
+        }
+
         // 判断最新扫码时间, 如果不是今天 则  插入记录
         if($scanUser->scan_date == null || !Carbon::parse($scanUser->scan_date)->isToday()){
             // 插入 扫码记录
