@@ -77,7 +77,7 @@ class ScanRecordController extends Controller
             $grid->scanUser()->avatar('头像')->image('http://wechat.shitouboy.com', 50, 50);
             $grid->created_at('扫码时间');
 
-            $grid->model()->orderBy('created_at', 'desc'); // 排序规则
+            $grid->model()->orderBy('id', 'desc'); // 排序规则
 
             $grid->filter(function($filter){ // 查询过滤
                 // 去掉默认的id过滤器
